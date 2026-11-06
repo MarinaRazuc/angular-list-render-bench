@@ -1,0 +1,78 @@
+:root {
+  --bg: #f7f7f5;
+  --fg: #1d1d1b;
+  --muted: #6b6b66;
+  --line: #e2e1dc;
+  --accent: #c2410c;
+  --row-h: 36px;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #151513;
+    --fg: #ecebe6;
+    --muted: #9a9a93;
+    --line: #2c2c29;
+    --accent: #fb923c;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 14px/1.4 system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+a { color: var(--accent); }
+
+.nav { padding: 8px 16px; border-bottom: 1px solid var(--line); }
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 16px;
+  h1 { font-size: 18px; margin: 0; }
+  small { color: var(--muted); font-weight: 400; margin-left: 6px; }
+  input { padding: 6px 10px; border: 1px solid var(--line); border-radius: 6px; background: transparent; color: inherit; min-width: 220px; }
+  span { color: var(--muted); }
+}
+
+// Every strategy scrolls inside the same fixed-height container so scroll measurements are comparable.
+.viewport {
+  display: block;
+  height: calc(100vh - 110px);
+  overflow-y: auto;
+  border-top: 1px solid var(--line);
+  contain: strict;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 110px 1fr 120px 100px 70px 100px;
+  gap: 12px;
+  align-items: center;
+  height: var(--row-h);
+  padding: 0 16px;
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+  overflow: hidden;
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+}
+
+.sentinel { height: 1px; }
+
+.home {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 32px 16px;
+  select { margin-left: 8px; padding: 4px 8px; }
+  .strategies { list-style: none; padding: 0; margin-top: 24px; }
+  li { padding: 12px 0; border-bottom: 1px solid var(--line); }
+  li p { margin: 4px 0 0; color: var(--muted); }
+  a { font-weight: 600; font-size: 16px; }
+}
